@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: linear-gradient(to left, #da4453, #89216b);
+}
+
+div.box {
+background: white;
+width: 400px;
+border-radius: 10px;
+margin: 10px;
+padding: 20px;
+
+}

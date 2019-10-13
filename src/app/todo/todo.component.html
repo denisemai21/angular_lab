@@ -1,0 +1,35 @@
+<div class="box"><h1> {{ title }}</h1>
+    <p>A place to store the things you have to do!</p>
+    <input type="text" placeholder="Filter your to do" [(ngModel)]="searchText" />
+    
+    <br>
+    
+    <ol>
+        <li *ngFor="let task of tasks" [ngClass]="{strike: task.completed}">
+        <button *ngIf="showButton" (click)="removeCompleteTask()" class="complete">Complete</button>
+        <!-- <button *ngIf="showButton" (click)="completeTask()" class="complete">Complete</button> -->
+        {{task.task}}
+        <button class="remove">x</button>
+      </li>
+      </ol>
+
+
+    <input class="add" type="text" placeholder="Add your to do" [(ngModel)]="newTask"/><br>
+    <button type ="button" class="add-button" (click)="Add()">Add</button>
+    </div>
+
+
+            <!-- <table> -->
+    
+      <!-- <tr *ngFor="let todo of todos">
+    <td> {{todo.label}}</td>
+    <td> {{todo.priority}}</td>
+    <td> {{todo.done ? '&#10003;' : '&#10005;'}}</td>
+    <td>
+      <button class="delete">x</button>
+    </td>
+      </tr>
+    </table> -->
+    
+    <!-- <input type="text" #newTodoTask placeholder="Add your to do" /><br>
+    <button (click)="addTodo(newTodo.value); newTodo.value=''">Add</button> -->
