@@ -1,15 +1,15 @@
 <div class="box"><h1> {{ title }}</h1>
     <p>A place to store the things you have to do!</p>
-    <input type="text" placeholder="Filter your to do" [(ngModel)]="searchText" />
+    <input type="text" placeholder="Filter your to do" [(ngModel)]="filterTask" (input)="filterTaskItems()" />
     
     <br>
     
     <ol>
-        <li *ngFor="let task of tasks" [ngClass]="{strike: task.completed}">
-        <button *ngIf="showButton" (click)="removeCompleteTask()" class="complete">Complete</button>
+        <li *ngFor="let task of filteredTaskItems; let i =index">
+        <button *ngIf="!task.completed" class="complete" (click)="completeTask(task)">Complete</button>
         <!-- <button *ngIf="showButton" (click)="completeTask()" class="complete">Complete</button> -->
-        {{task.task}}
-        <button class="remove">x</button>
+        <span [ngClass]="{strike: task.completed}">{{task.task}}</span>
+        <button class="remove" (click)="removeCompleteTask(task)">x</button>
       </li>
       </ol>
 

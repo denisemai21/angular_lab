@@ -24,19 +24,43 @@ export class TodoComponent {
 // {completed: false, task: 'Do Laundry'},
   ]
 
-  showButton: boolean = true;
-  removeCompleteTask(){
-      this.showButton = false;
+  filterTask: string = "";
+  filteredTaskItems = [...this.tasks];
+
+  filterTaskItems() {
+    this.filteredTaskItems = this.tasks.filter(
+      item => item.task.toLowerCase().indexOf(this.filterTask.toLowerCase()) > -1);
+      if (!this.filterTask){
+        this.filteredTaskItems = [...this.tasks];
+      }
   }
 
-  Add() {
+  showButton: boolean = true;
+  
+  removeCompleteTask(tasks: Todo){
+      // this.showButton = false;
+      const index = this.tasks.indexOf(tasks, 0);
+  if (index > -1) {
+  this.tasks.splice(index, 1)
+  this.filteredTaskItems = [...this.tasks];
+  }
+  }
+
+  addTask() {
     const newItem = {
       task: this.newTask,
       completed: false
     }
     this.tasks.push(newItem)
+    this.filteredTaskItems = [...this.tasks]; //to access it again
     this.newTask = null;
   }
+
+  completeTask(tasks: Todo) {
+    tasks.completed = !tasks.completed;
+  }   
+  
+
 
 //   numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 //   todos = [{ 
